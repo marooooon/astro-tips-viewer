@@ -1,5 +1,29 @@
 # Tips Viewer - 開発メモ
 
+## ☁️ Cloudflare Pages 運用メモ（忘れ防止）
+
+- 公開URL: https://astro-tips-viewer.pages.dev/
+- GitHubリポジトリ: https://github.com/marooooon/astro-tips-viewer
+- Production branch: `main`
+- Cloudflare Pages の Build command: `npm run build`
+- Build output directory: `dist`
+
+### 手動デプロイ（CLI）
+
+```bash
+# 初回のみ（ブラウザ認証）
+npm run cf:login
+
+# 本番デプロイ（build + pages deploy）
+npm run cf:deploy
+```
+
+### 注意点
+
+- Cloudflare で `Retry deployment` すると古いコミットを再実行することがある。
+- 最新を反映したいときは、最新コミットで `Create deployment` を実行する。
+- デプロイログ先頭の `HEAD is now at ...` が最新SHAか必ず確認する。
+
 ## ✅ プロジェクト完成状況
 
 - 全ファイル作成済み

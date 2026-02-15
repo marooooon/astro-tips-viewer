@@ -108,6 +108,8 @@ npm run preview
 
 ## Cloudflare Pages へのデプロイ
 
+公開URL: https://astro-tips-viewer.pages.dev/
+
 1. GitHubリポジトリにプッシュ
 2. Cloudflare Pagesで新規プロジェクト作成
 3. ビルド設定:
@@ -116,6 +118,18 @@ npm run preview
    - **Node.jsバージョン**: 18以上
 
 自動デプロイが完了し、グローバルCDNで配信されます。
+
+### CLIで簡単デプロイ
+
+```bash
+# 初回のみ認証
+npm run cf:login
+
+# build + Cloudflare Pages deploy
+npm run cf:deploy
+```
+
+> 注意: Cloudflare で `Retry deployment` は古いコミットを再実行する場合があります。最新反映は最新コミットで `Create deployment` を使ってください。
 
 ## データの追加・編集
 

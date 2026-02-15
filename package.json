@@ -10,6 +10,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "cf:login": "npx wrangler login",
+    "cf:deploy": "npm run build && npx wrangler pages deploy dist --project-name astro-tips-viewer --branch main",
     "astro": "astro"
   },
   "dependencies": {
