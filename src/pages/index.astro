@@ -1,0 +1,84 @@
+---
+import type { Post } from '../types/post';
+import PostCard from '../components/PostCard.astro';
+import Filter from '../components/Filter';
+import '../styles/global.css';
+
+// JSONデータを読み込み、型を適用
+import postsData from '../data/posts.json';
+const posts: Post[] = postsData;
+
+// 日付の降順でソート
+const sortedPosts = [...posts].sort((a, b) => 
+  new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tips Viewer - 技術Tipsコレクション</title>
+    <meta name="description" content="開発に役立つ技術Tipsを集めたビューワー" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>📚 Tips Viewer</h1>
+        <p>開発に役立つ技術Tipsコレクション</p>
+      </header>
+
+      <main>
+        <!-- Filterコンポーネント（React Island） -->
+        <Filter client:load posts={sortedPosts} />
+
+        <!-- 記事一覧（初期表示） -->
+        <div id="posts-container">
+          {sortedPosts.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; 2026 Tips Viewer - Built with Astro & TypeScript</p>
+      </footer>
+    </div>
+
+    <script>
+      import type { Post } from '../types/post';
+
+      // クライアント側でフィルタリング結果を反映
+      const postsContainer = document.getElementById('posts-container');
+      
+      // カスタムイベントでフィルタ結果を受け取る
+      window.addEventListener('postsFiltered', ((event: CustomEvent<Post[]>) => {
+        if (!postsContainer) return;
+        
+        const filteredPosts = event.detail;
+        
+        if (filteredPosts.length === 0) {
+          postsContainer.innerHTML = '<p class="no-results">該当する記事が見つかりませんでした。</p>';
+          return;
+        }
+
+        // フィルタリング結果を表示（PostCardのHTMLを動的生成）
+        postsContainer.innerHTML = filteredPosts.map(post => `
+          <article class="post-card">
+            <div class="post-card-header">
+              <h2>
+                <a href="/posts/${post.id}">${post.title}</a>
+              </h2>
+              <time datetime="${post.date}">${post.date}</time>
+            </div>
+            <p class="post-description">${post.description}</p>
+            <div class="post-tags">
+              ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+          </article>
+        `).join('');
+      }) as EventListener);
+    </script>
+  </body>
+</html>

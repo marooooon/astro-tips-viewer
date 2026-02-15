@@ -1,0 +1,82 @@
+[
+  {
+    "id": "astro-html-first-mindset",
+    "title": "Astroは“HTMLファースト”で考えるのがコツ",
+    "description": "React的に考えるとハマる。AstroはまずHTMLを書く。",
+    "tags": ["Astro", "設計思想"],
+    "date": "2026-02-01",
+    "body": "AstroはReactのように最初からコンポーネント思考で組み立てるよりも、まず静的HTMLを組み立ててから必要な部分だけをインタラクティブにする、という考え方が重要でした。HTMLファーストで設計すると、不要なJavaScriptを減らせます。"
+  },
+  {
+    "id": "astro-js-minimalism",
+    "title": "JavaScriptを“書かない勇気”がAstroでは強みになる",
+    "description": "JSを書かないことがパフォーマンス向上につながる。",
+    "tags": ["Astro", "Performance"],
+    "date": "2026-02-02",
+    "body": "AstroはデフォルトでJavaScriptをクライアントに送らない設計です。実務では、インタラクションが不要な部分にJSを書かないことでLighthouseスコアが向上しました。Islandsで最小限のJSに抑えるのがポイントです。"
+  },
+  {
+    "id": "astro-component-boundary",
+    "title": "Astroコンポーネントの責務分離の考え方",
+    "description": "UIの責務を分離する設計メモ。",
+    "tags": ["Astro", "設計"],
+    "date": "2026-02-03",
+    "body": "Astroコンポーネントは基本的に“表示専用”に近い役割を持たせると整理しやすいと感じました。ロジックは可能な限り外部に分離し、表示と処理を明確に分けることで可読性が向上します。"
+  },
+  {
+    "id": "astro-ssg-with-api",
+    "title": "API連携でもSSGは有効か？",
+    "description": "Kuroco APIと組み合わせた実務所感。",
+    "tags": ["Astro", "SSG", "Kuroco"],
+    "date": "2026-02-04",
+    "body": "実務ではKuroco APIとAstroを組み合わせました。ビルド時にAPIデータを取得し静的生成することで、表示速度とSEOを両立できました。ただし頻繁に更新されるデータには工夫が必要です。"
+  },
+  {
+    "id": "astro-routing-design",
+    "title": "getStaticPaths設計で詰まりやすいポイント",
+    "description": "動的ルーティングの落とし穴。",
+    "tags": ["Astro", "Routing"],
+    "date": "2026-02-05",
+    "body": "getStaticPathsで生成対象を明示する必要があります。データ量が多い場合はビルド時間に影響します。ページ設計時にURL構造とデータ取得戦略を先に考えることが重要です。"
+  },
+  {
+    "id": "astro-weakness-dynamic",
+    "title": "Astroが少し苦手だと感じたケース",
+    "description": "リアルタイム性が必要な場合の課題。",
+    "tags": ["Astro", "課題"],
+    "date": "2026-02-06",
+    "body": "リアルタイム更新や高度なSPA的挙動が中心の場合、Astro単体では設計が複雑になります。その場合はReact中心のフレームワークの方が適しているケースもあると感じました。"
+  },
+  {
+    "id": "astro-build-time-consideration",
+    "title": "ビルド時間とデータ量のバランス",
+    "description": "SSG採用時の実務的な注意点。",
+    "tags": ["Astro", "SSG"],
+    "date": "2026-02-07",
+    "body": "SSGは高速ですが、生成ページ数が多い場合はビルド時間が伸びます。実務ではページ数や更新頻度を考慮し、SSRや部分的な動的取得とのバランスを検討する必要があります。"
+  },
+  {
+    "id": "astro-seo-advantage",
+    "title": "SEO観点で見たAstroの強み",
+    "description": "静的HTMLがもたらすメリット。",
+    "tags": ["Astro", "SEO"],
+    "date": "2026-02-08",
+    "body": "静的HTMLが生成されるため、クローラーにとって解析しやすい構造になります。実務プロジェクトでもSEO面で安定した成果が期待できると感じました。"
+  },
+  {
+    "id": "astro-dev-experience",
+    "title": "Astroの開発体験（DX）について",
+    "description": ".astroファイルの書き心地。",
+    "tags": ["Astro", "DX"],
+    "date": "2026-02-09",
+    "body": ".astroファイルではフロントマターでロジックを書き、テンプレートでHTMLを書く構造になっています。この分離は最初は独特ですが、慣れると見通しが良いと感じました。"
+  },
+  {
+    "id": "astro-summary-practical",
+    "title": "実務でAstroを選ぶ基準",
+    "description": "どんな案件に向いているかのまとめ。",
+    "tags": ["Astro", "まとめ"],
+    "date": "2026-02-10",
+    "body": "更新頻度がそこまで高くなく、SEOや表示速度が重要な案件ではAstroは非常に強力です。一方で高度なクライアント側ロジックが中心の場合は、設計を慎重に行う必要があります。"
+  }
+]
