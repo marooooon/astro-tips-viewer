@@ -3,6 +3,7 @@
 ## ☁️ Cloudflare Pages 運用メモ（忘れ防止）
 
 - 公開URL: https://astro-tips-viewer.pages.dev/
+- Cloudflare Dashboard: https://dash.cloudflare.com/177c881f7f5d5cfc122b9cd52efcffcd/pages/view/astro-tips-viewer
 - GitHubリポジトリ: https://github.com/marooooon/astro-tips-viewer
 - Production branch: `main`
 - Cloudflare Pages の Build command: `npm run build`
